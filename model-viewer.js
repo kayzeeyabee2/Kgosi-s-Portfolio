@@ -8,23 +8,21 @@ let modelLoading = false;
 const models = [
   {
     title: "Combat knife",
-    description:
-      "This futuristic dagger model features intricate details and glowing energy elements. Created in Blender with high-poly modeling techniques, the model was then optimized for real-time web rendering.",
     path: "models/knife.glb",
+    description: "A combat knife I made as my first 3D model.",
   },
   {
     title: "Kitchen Knife",
-    description:
-      "A detailed astronaut helmet with realistic materials and reflective surfaces. Designed for sci-fi environments and optimized for real-time rendering.",
-    path: "models/helmet.glb",
+    path: "models/KitchenKnife.glb",
+    description: "A detailed kitchen knife model designed for game environments."
   },
   {
     title: "Handcuffs",
-    description:
-      "Magical weapon with intricate details and textures. Features glowing runes along the blade and ornate handle designs.",
-    path: "models/sword.glb",
-  },
+    path: "models/handcuffs.glb", 
+    description: "Metal handcuffs with a rusted texture, designed for escape room games."
+  }
 ];
+
 
 function init3DViewer() {
   // Only initialize once
@@ -85,12 +83,9 @@ function init3DViewer() {
   });
 
   // Set up model navigation buttons
-  document
-    .getElementById("prevModelBtn")
-    .addEventListener("click", () => changeModel(-1));
-  document
-    .getElementById("nextModelBtn")
-    .addEventListener("click", () => changeModel(1));
+  // Set up model navigation buttons (using proper IDs)
+  document.getElementById("prevModelBtn").addEventListener("click", () => changeModel(-1));
+  document.getElementById("nextModelBtn").addEventListener("click", () => changeModel(1));
 
   // Load initial model
   loadModel(currentModel);
@@ -117,8 +112,7 @@ function loadModel(index) {
 
   // Update model info
   document.getElementById("model-title").textContent = modelData.title;
-  document.getElementById("model-description").textContent =
-    modelData.description;
+  document.getElementById("model-description").textContent = modelData.description || 'No description available';
 
   // Create GLTF loader
   const loader = new THREE.GLTFLoader();
@@ -189,6 +183,7 @@ function changeModel(direction) {
   loadModel(currentModel);
 }
 
+
 function animate() {
   requestAnimationFrame(animate);
 
@@ -200,3 +195,16 @@ function animate() {
   if (controls) controls.update();
   if (renderer && scene && camera) renderer.render(scene, camera);
 }
+
+// Add this at the end of model-viewer.js
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize when models page is shown
+  document
+    .querySelector('.nav-link[data-page="models"]')
+    .addEventListener("click", init3DViewer);
+
+  // Also initialize if models page is active on load
+  if (document.getElementById("models-page").classList.contains("active")) {
+    init3DViewer();
+  }
+});
