@@ -90,7 +90,7 @@ body {
 .hero h1 {
     font-size: 4rem;
     margin-bottom: 20px;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+    background: linear-gradient(to right, #77f866, #fe7700);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -113,12 +113,12 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+    box-shadow: 0 5px 15px rgba(254, 210, 79, 0.4);
 }
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(84, 197, 203, 0.6);
+    box-shadow: 0 8px 20px rgb(46, 25, 3);
 }
 
 /* About Page */
@@ -203,7 +203,7 @@ body {
 .model-header h2 {
     font-size: 2.8rem;
     margin-bottom: 15px;
-    color: #4facfe;
+    color: #f29f2a;
 }
 
 .model-header p {
